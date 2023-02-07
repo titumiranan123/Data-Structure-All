@@ -25,6 +25,17 @@ private:
     }
 
 public:
+// poti ta element print korar jonno
+    void travas()
+    {
+        node *a = head;
+        while (a != NULL)
+        {
+            cout << a->next << "  ";
+            a = a->next;
+        }
+    }
+// head a valu insert korar jonno
     void inserAtHead(int x)
     {
         node *a = createNewnode(x);
@@ -36,14 +47,49 @@ public:
         a->next = head;
         head = a;
     }
-    void Travas(){
-        node*a = head;
-        while (a!= NULL)
+    // taile a valu insert korar jonno
+    void insertAttail(int x)
+    {
+        node *a = createNewnode(x);
+
+        if (head == NULL)
         {
-            cout << a->data<<" ";
+            head = a;
+            return;
+        }
+        node *tmp = head;
+        while (tmp->next != NULL)
+        {
+            tmp = tmp->next;
+        }
+        
+        tmp->next = a;
+    }
+// poti ta element print korar jonno
+
+    void Travas()
+    {
+        node *a = head;
+        while (a != NULL)
+        {
+            cout << a->data << " ";
             a = a->next;
         }
-        cout<<"\n";
+        cout << "\n";
+    }
+    int searchValu(int valu){
+        node* a = head;
+        int index = 0;
+        while (a!= NULL)
+        {
+            if(a->data == valu){
+                return index;
+                cout << a->data;
+            }
+            a = a->next;
+            index++;
+        }
+        return -1;
         
     }
 };
@@ -52,5 +98,11 @@ int main()
     Linklist l;
     l.inserAtHead(10);
     l.inserAtHead(20);
+    l.insertAttail(12);
+    l.inserAtHead(201);
+    l.insertAttail(112);
+    l.inserAtHead(220);
+    l.insertAttail(120);
     l.Travas();
+    cout << l.searchValu(8);
 }
